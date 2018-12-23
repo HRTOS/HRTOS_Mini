@@ -1,0 +1,70 @@
+C51 COMPILER V9.00   TASK                                                                  12/17/2018 11:59:06 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE TASK
+OBJECT MODULE PLACED IN TASK.OBJ
+COMPILER INVOKED BY: F:\C51\BIN\C51.EXE TASK.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include<hrtos_mini.h>
+   3          
+   4          void task_0(void) {
+   5   1      while(1) {
+   6   2       P0=0;
+   7   2      }
+   8   1      }
+   9          
+  10          void task_1(void) 
+  11          {
+  12   1      
+  13   1      while(1) {P0=1;
+  14   2      }
+  15   1      }
+  16          
+  17          void task_2(void) {
+  18   1      while(1) {
+  19   2      P0 = 0x3;
+  20   2      }
+  21   1      }
+  22          
+  23          void task_3(void) {
+  24   1      while(1) {
+  25   2      P0 = 7;
+  26   2      }
+  27   1      }
+  28          
+  29          void task_4(void) {
+  30   1      while(1) {
+  31   2      P0 = 15;
+  32   2      }
+  33   1      }
+  34          
+  35          
+  36          void main() {
+  37   1      os_init();
+  38   1      os_task(4,(unsigned int)&task_0,(unsigned char)os_task_stack[4]);
+  39   1      os_task(3,(unsigned int)&task_1,(unsigned char)os_task_stack[3]);
+  40   1      os_task(2,(unsigned int)&task_2,(unsigned char)os_task_stack[2]);
+  41   1      os_task(1,(unsigned int)&task_3,(unsigned char)os_task_stack[1]);
+  42   1      os_task(0,(unsigned int)&task_4,(unsigned char)os_task_stack[0]); 
+  43   1      os_start();
+  44   1      }
+  45          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     86    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.00   TASK                                                                  12/17/2018 11:59:06 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

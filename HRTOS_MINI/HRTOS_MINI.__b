@@ -1,0 +1,7 @@
+TRANSFER
+".\HRTOS_DELAY.obj",
+".\HRTOS_INT.obj",
+".\HRTOS_MINI.obj",
+".\HRTOS_TASK_EXIT.obj",
+".\HRTOS_INT_OK.obj" 
+TO "HRTOS_MINI.LIB"
