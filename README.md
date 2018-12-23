@@ -1,3 +1,5 @@
+![](https://github.com/HRTOS/HRTOS_Mini/raw/master/logo.png)  
+
 # HRTOS_Mini
 HRTOS_Mini for 8051
 
