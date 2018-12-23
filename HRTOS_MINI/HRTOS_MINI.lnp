@@ -1,6 +1,0 @@
-".\HRTOS_DELAY.obj",
-".\HRTOS_INT.obj",
-".\HRTOS_MINI.obj",
-".\HRTOS_TASK_EXIT.obj" 
-TO "HRTOS_MINI" 
-RAMSIZE(256) 
