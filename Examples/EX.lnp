@@ -1,4 +1,0 @@
-"TASK.obj",
-"..\HRTOS_MINI\HRTOS_MINI.LIB" 
-TO "EX" 
-RAMSIZE(256) 
