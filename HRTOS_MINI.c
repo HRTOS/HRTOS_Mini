@@ -1,14 +1,14 @@
 #include <reg52.h>
 #include<hrtos_mini.h>
-#define OS_ST 9	  //±£´æµÄ¶ÑÕ»Êı
+#define OS_ST 9	  //ä¿å­˜çš„å †æ ˆæ•°
 unsigned char os_en_cr_count;
 unsigned char code os_map_tbl[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
 TCB os_tcb[MAX_TASKS];
-unsigned char os_task_running_id;//µ±Ç°ÔËĞĞµÄÈÎÎñºÅ
-unsigned char os_task_rdy_tbl;//ÈÎÎñ×´Ì¬
-unsigned char  os_task_stack[MAX_TASKS][8];//ÈÎÎñ¶ÑÕ»Çø
-unsigned char os_hrtos_stack[26];//HRTOS¶ÑÕ»Çø
-unsigned char os_stack;//¶ÑÕ»³õÊ¼Öµ
+unsigned char os_task_running_id;//å½“å‰è¿è¡Œçš„ä»»åŠ¡å·
+unsigned char os_task_rdy_tbl;//ä»»åŠ¡çŠ¶æ€
+unsigned char  os_task_stack[MAX_TASKS][4];//ä»»åŠ¡å †æ ˆåŒº
+unsigned char os_hrtos_stack[26];//HRTOSå †æ ˆåŒº
+unsigned char os_stack;//å †æ ˆåˆå§‹å€¼
 bit os_hrtos_wait;
 void timer0_isr(void) interrupt 1
 {
@@ -37,11 +37,11 @@ void timer0_isr(void) interrupt 1
         }
     }
     else { os_hrtos_wait=1; }
-    for(i=0; i<j; i++)   //±£»¤
+    for(i=0; i<j; i++)   //ä¿æŠ¤
     {
         os_task_stack[os_task_running_id][i]=os_hrtos_stack[i];
     }
-    for (i=os_task_running_id+1; i<MAX_TASKS; i++)//É¸Ñ¡
+    for (i=os_task_running_id+1; i<MAX_TASKS; i++)//ç­›é€‰
     {
         if(os_task_rdy_tbl&os_map_tbl[i])
         {
@@ -59,9 +59,9 @@ void timer0_isr(void) interrupt 1
         }
     }
 OS_HRT:
-	os_task_running_id = i;//Ñ¡Ôñ
+	os_task_running_id = i;//é€‰æ‹©
     j= os_tcb[os_task_running_id].os_task_stack_top-OS_ST-os_stack;
-    for(i=0; i<j; i++)   //»Ö¸´
+    for(i=0; i<j; i++)   //æ¢å¤
     {
         os_hrtos_stack[i]=os_task_stack[os_task_running_id][i];
     }
@@ -83,11 +83,11 @@ void os_init(void)
 void os_task(unsigned char task_id ,unsigned int task_point)
 {
     os_enter_critical();
-    os_task_stack[task_id][0] = task_point;//µØÖ·
+    os_task_stack[task_id][0] = task_point;//åœ°å€
     os_task_stack[task_id][1] = task_point>>8;
     os_tcb[task_id].os_task_stack_top = os_stack+11;
-    os_task_rdy_tbl |= os_map_tbl[task_id];//ÉúĞ§
-    os_tcb[task_id].os_task_wait_tick = 0; //ÑÓÊ±
+    os_task_rdy_tbl |= os_map_tbl[task_id];//ç”Ÿæ•ˆ
+    os_tcb[task_id].os_task_wait_tick = 0; //å»¶æ—¶
     os_exit_critical();
 }
 void os_start(void)
