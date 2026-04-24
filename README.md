@@ -34,4 +34,3 @@ null|172259743
 1. 欢迎加入HRTOS硬实时操作系统官方交流群（QQ群：523549975）
 2. 访问我们的官网，获取更多资料 https://www.hrtos.com
 3. 问题反馈 (邮箱：admin@hrtos.com) 
-4. 本版本下载链接（https://www.hrtos.com/download/迷你HRTOS第二版.rar）
